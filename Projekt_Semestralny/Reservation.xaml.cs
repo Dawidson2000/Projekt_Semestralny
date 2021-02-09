@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekt_Semestralny
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy Reservation.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Reservation : Window
     {
-        Reservation reservation = new Reservation();
-
-        public MainWindow()
+        public Reservation()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            reservation.Show();
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
