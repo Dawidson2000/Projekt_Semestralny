@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KinoRezerwacjeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="filmy">
+          <Key>
+            <PropertyRef Name="id_filmu" />
+          </Key>
+          <Property Name="id_filmu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tytul" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="nazwisko_rezysera" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="czas_trwania_minuty" Type="int" Nullable="false" />
+          <Property Name="jezyk" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="miejsca">
+          <Key>
+            <PropertyRef Name="id_miejsca" />
+          </Key>
+          <Property Name="id_miejsca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rzad" Type="tinyint" Nullable="false" />
+          <Property Name="numer_miejsca" Type="tinyint" Nullable="false" />
+          <Property Name="id_sali" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rezerwacje">
+          <Key>
+            <PropertyRef Name="id_rezerwacji" />
+          </Key>
+          <Property Name="id_rezerwacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_seansu" Type="int" Nullable="false" />
+          <Property Name="typ_rezerwacji" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="imie_klienta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nr_telefonu" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="nazwisko_klienta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="czy_oplacone" Type="bit" Nullable="false" />
+          <Property Name="data_dokonania_rezerwacji" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="id_sali" />
+          </Key>
+          <Property Name="id_sali" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilosc_miejsc" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seanse">
+          <Key>
+            <PropertyRef Name="id_seansu" />
+          </Key>
+          <Property Name="id_seansu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_filmu" Type="int" Nullable="false" />
+          <Property Name="id_sali" Type="int" Nullable="false" />
+          <Property Name="czas_rozpoczecia" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zarezerwowane_miejsca">
+          <Key>
+            <PropertyRef Name="id_zar_miej" />
+          </Key>
+          <Property Name="id_zar_miej" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_miejsca" Type="int" Nullable="false" />
+          <Property Name="id_rezerwacji" Type="int" Nullable="false" />
+          <Property Name="id_seansu" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="miejsca_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="miejsca" Type="Self.miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id_sali" />
+            </Principal>
+            <Dependent Role="miejsca">
+              <PropertyRef Name="id_sali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezerwacje_seanse">
+          <End Role="seanse" Type="Self.seanse" Multiplicity="1" />
+          <End Role="rezerwacje" Type="Self.rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seanse">
+              <PropertyRef Name="id_seansu" />
+            </Principal>
+            <Dependent Role="rezerwacje">
+              <PropertyRef Name="id_seansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="seanse_filmy">
+          <End Role="filmy" Type="Self.filmy" Multiplicity="1" />
+          <End Role="seanse" Type="Self.seanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmy">
+              <PropertyRef Name="id_filmu" />
+            </Principal>
+            <Dependent Role="seanse">
+              <PropertyRef Name="id_filmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="seanse_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="seanse" Type="Self.seanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id_sali" />
+            </Principal>
+            <Dependent Role="seanse">
+              <PropertyRef Name="id_sali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_miejsca">
+          <End Role="miejsca" Type="Self.miejsca" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="miejsca">
+              <PropertyRef Name="id_miejsca" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_miejsca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_rezerwacje">
+          <End Role="rezerwacje" Type="Self.rezerwacje" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezerwacje">
+              <PropertyRef Name="id_rezerwacji" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_rezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_seanse">
+          <End Role="seanse" Type="Self.seanse" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seanse">
+              <PropertyRef Name="id_seansu" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_seansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KinoRezerwacjeModelStoreContainer">
+          <EntitySet Name="filmy" EntityType="Self.filmy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="miejsca" EntityType="Self.miejsca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rezerwacje" EntityType="Self.rezerwacje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sale" EntityType="Self.sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seanse" EntityType="Self.seanse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zarezerwowane_miejsca" EntityType="Self.zarezerwowane_miejsca" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="miejsca_sale" Association="Self.miejsca_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="miejsca" EntitySet="miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="rezerwacje_seanse" Association="Self.rezerwacje_seanse">
+            <End Role="seanse" EntitySet="seanse" />
+            <End Role="rezerwacje" EntitySet="rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="seanse_filmy" Association="Self.seanse_filmy">
+            <End Role="filmy" EntitySet="filmy" />
+            <End Role="seanse" EntitySet="seanse" />
+          </AssociationSet>
+          <AssociationSet Name="seanse_sale" Association="Self.seanse_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="seanse" EntitySet="seanse" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_miejsca" Association="Self.zarez_miejsca">
+            <End Role="miejsca" EntitySet="miejsca" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_rezerwacje" Association="Self.zarez_rezerwacje">
+            <End Role="rezerwacje" EntitySet="rezerwacje" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_seanse" Association="Self.zarez_seanse">
+            <End Role="seanse" EntitySet="seanse" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KinoRezerwacjeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="filmy">
+          <Key>
+            <PropertyRef Name="id_filmu" />
+          </Key>
+          <Property Name="id_filmu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tytul" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nazwisko_rezysera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="czas_trwania_minuty" Type="Int32" Nullable="false" />
+          <Property Name="jezyk" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="seanse" Relationship="Self.seanse_filmy" FromRole="filmy" ToRole="seanse" />
+        </EntityType>
+        <EntityType Name="miejsca">
+          <Key>
+            <PropertyRef Name="id_miejsca" />
+          </Key>
+          <Property Name="id_miejsca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rzad" Type="Byte" Nullable="false" />
+          <Property Name="numer_miejsca" Type="Byte" Nullable="false" />
+          <Property Name="id_sali" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sale" Relationship="Self.miejsca_sale" FromRole="miejsca" ToRole="sale" />
+          <NavigationProperty Name="zarezerwowane_miejsca" Relationship="Self.zarez_miejsca" FromRole="miejsca" ToRole="zarezerwowane_miejsca" />
+        </EntityType>
+        <EntityType Name="rezerwacje">
+          <Key>
+            <PropertyRef Name="id_rezerwacji" />
+          </Key>
+          <Property Name="id_rezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_seansu" Type="Int32" Nullable="false" />
+          <Property Name="typ_rezerwacji" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="imie_klienta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nr_telefonu" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nazwisko_klienta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="czy_oplacone" Type="Boolean" Nullable="false" />
+          <Property Name="data_dokonania_rezerwacji" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="seanse" Relationship="Self.rezerwacje_seanse" FromRole="rezerwacje" ToRole="seanse" />
+          <NavigationProperty Name="zarezerwowane_miejsca" Relationship="Self.zarez_rezerwacje" FromRole="rezerwacje" ToRole="zarezerwowane_miejsca" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="id_sali" />
+          </Key>
+          <Property Name="id_sali" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilosc_miejsc" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="miejsca" Relationship="Self.miejsca_sale" FromRole="sale" ToRole="miejsca" />
+          <NavigationProperty Name="seanse" Relationship="Self.seanse_sale" FromRole="sale" ToRole="seanse" />
+        </EntityType>
+        <EntityType Name="seanse">
+          <Key>
+            <PropertyRef Name="id_seansu" />
+          </Key>
+          <Property Name="id_seansu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_filmu" Type="Int32" Nullable="false" />
+          <Property Name="id_sali" Type="Int32" Nullable="false" />
+          <Property Name="czas_rozpoczecia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="filmy" Relationship="Self.seanse_filmy" FromRole="seanse" ToRole="filmy" />
+          <NavigationProperty Name="rezerwacje" Relationship="Self.rezerwacje_seanse" FromRole="seanse" ToRole="rezerwacje" />
+          <NavigationProperty Name="sale" Relationship="Self.seanse_sale" FromRole="seanse" ToRole="sale" />
+          <NavigationProperty Name="zarezerwowane_miejsca" Relationship="Self.zarez_seanse" FromRole="seanse" ToRole="zarezerwowane_miejsca" />
+        </EntityType>
+        <EntityType Name="zarezerwowane_miejsca">
+          <Key>
+            <PropertyRef Name="id_zar_miej" />
+          </Key>
+          <Property Name="id_zar_miej" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_miejsca" Type="Int32" Nullable="false" />
+          <Property Name="id_rezerwacji" Type="Int32" Nullable="false" />
+          <Property Name="id_seansu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="miejsca" Relationship="Self.zarez_miejsca" FromRole="zarezerwowane_miejsca" ToRole="miejsca" />
+          <NavigationProperty Name="rezerwacje" Relationship="Self.zarez_rezerwacje" FromRole="zarezerwowane_miejsca" ToRole="rezerwacje" />
+          <NavigationProperty Name="seanse" Relationship="Self.zarez_seanse" FromRole="zarezerwowane_miejsca" ToRole="seanse" />
+        </EntityType>
+        <Association Name="seanse_filmy">
+          <End Role="filmy" Type="Self.filmy" Multiplicity="1" />
+          <End Role="seanse" Type="Self.seanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmy">
+              <PropertyRef Name="id_filmu" />
+            </Principal>
+            <Dependent Role="seanse">
+              <PropertyRef Name="id_filmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="miejsca_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="miejsca" Type="Self.miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id_sali" />
+            </Principal>
+            <Dependent Role="miejsca">
+              <PropertyRef Name="id_sali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_miejsca">
+          <End Role="miejsca" Type="Self.miejsca" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="miejsca">
+              <PropertyRef Name="id_miejsca" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_miejsca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezerwacje_seanse">
+          <End Role="seanse" Type="Self.seanse" Multiplicity="1" />
+          <End Role="rezerwacje" Type="Self.rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seanse">
+              <PropertyRef Name="id_seansu" />
+            </Principal>
+            <Dependent Role="rezerwacje">
+              <PropertyRef Name="id_seansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_rezerwacje">
+          <End Role="rezerwacje" Type="Self.rezerwacje" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezerwacje">
+              <PropertyRef Name="id_rezerwacji" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_rezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="seanse_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="seanse" Type="Self.seanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id_sali" />
+            </Principal>
+            <Dependent Role="seanse">
+              <PropertyRef Name="id_sali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zarez_seanse">
+          <End Role="seanse" Type="Self.seanse" Multiplicity="1" />
+          <End Role="zarezerwowane_miejsca" Type="Self.zarezerwowane_miejsca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seanse">
+              <PropertyRef Name="id_seansu" />
+            </Principal>
+            <Dependent Role="zarezerwowane_miejsca">
+              <PropertyRef Name="id_seansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KinoRezerwacjeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="filmy" EntityType="Self.filmy" />
+          <EntitySet Name="miejsca" EntityType="Self.miejsca" />
+          <EntitySet Name="rezerwacje" EntityType="Self.rezerwacje" />
+          <EntitySet Name="sale" EntityType="Self.sale" />
+          <EntitySet Name="seanse" EntityType="Self.seanse" />
+          <EntitySet Name="zarezerwowane_miejsca" EntityType="Self.zarezerwowane_miejsca" />
+          <AssociationSet Name="seanse_filmy" Association="Self.seanse_filmy">
+            <End Role="filmy" EntitySet="filmy" />
+            <End Role="seanse" EntitySet="seanse" />
+          </AssociationSet>
+          <AssociationSet Name="miejsca_sale" Association="Self.miejsca_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="miejsca" EntitySet="miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_miejsca" Association="Self.zarez_miejsca">
+            <End Role="miejsca" EntitySet="miejsca" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="rezerwacje_seanse" Association="Self.rezerwacje_seanse">
+            <End Role="seanse" EntitySet="seanse" />
+            <End Role="rezerwacje" EntitySet="rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_rezerwacje" Association="Self.zarez_rezerwacje">
+            <End Role="rezerwacje" EntitySet="rezerwacje" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+          <AssociationSet Name="seanse_sale" Association="Self.seanse_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="seanse" EntitySet="seanse" />
+          </AssociationSet>
+          <AssociationSet Name="zarez_seanse" Association="Self.zarez_seanse">
+            <End Role="seanse" EntitySet="seanse" />
+            <End Role="zarezerwowane_miejsca" EntitySet="zarezerwowane_miejsca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KinoRezerwacjeModelStoreContainer" CdmEntityContainer="KinoRezerwacjeEntities">
+          <EntitySetMapping Name="filmy">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.filmy">
+              <MappingFragment StoreEntitySet="filmy">
+                <ScalarProperty Name="id_filmu" ColumnName="id_filmu" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="nazwisko_rezysera" ColumnName="nazwisko_rezysera" />
+                <ScalarProperty Name="czas_trwania_minuty" ColumnName="czas_trwania_minuty" />
+                <ScalarProperty Name="jezyk" ColumnName="jezyk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="miejsca">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.miejsca">
+              <MappingFragment StoreEntitySet="miejsca">
+                <ScalarProperty Name="id_miejsca" ColumnName="id_miejsca" />
+                <ScalarProperty Name="rzad" ColumnName="rzad" />
+                <ScalarProperty Name="numer_miejsca" ColumnName="numer_miejsca" />
+                <ScalarProperty Name="id_sali" ColumnName="id_sali" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rezerwacje">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.rezerwacje">
+              <MappingFragment StoreEntitySet="rezerwacje">
+                <ScalarProperty Name="id_rezerwacji" ColumnName="id_rezerwacji" />
+                <ScalarProperty Name="id_seansu" ColumnName="id_seansu" />
+                <ScalarProperty Name="typ_rezerwacji" ColumnName="typ_rezerwacji" />
+                <ScalarProperty Name="imie_klienta" ColumnName="imie_klienta" />
+                <ScalarProperty Name="nr_telefonu" ColumnName="nr_telefonu" />
+                <ScalarProperty Name="nazwisko_klienta" ColumnName="nazwisko_klienta" />
+                <ScalarProperty Name="czy_oplacone" ColumnName="czy_oplacone" />
+                <ScalarProperty Name="data_dokonania_rezerwacji" ColumnName="data_dokonania_rezerwacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sale">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.sale">
+              <MappingFragment StoreEntitySet="sale">
+                <ScalarProperty Name="id_sali" ColumnName="id_sali" />
+                <ScalarProperty Name="ilosc_miejsc" ColumnName="ilosc_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seanse">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.seanse">
+              <MappingFragment StoreEntitySet="seanse">
+                <ScalarProperty Name="id_seansu" ColumnName="id_seansu" />
+                <ScalarProperty Name="id_filmu" ColumnName="id_filmu" />
+                <ScalarProperty Name="id_sali" ColumnName="id_sali" />
+                <ScalarProperty Name="czas_rozpoczecia" ColumnName="czas_rozpoczecia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zarezerwowane_miejsca">
+            <EntityTypeMapping TypeName="KinoRezerwacjeModel.zarezerwowane_miejsca">
+              <MappingFragment StoreEntitySet="zarezerwowane_miejsca">
+                <ScalarProperty Name="id_zar_miej" ColumnName="id_zar_miej" />
+                <ScalarProperty Name="id_miejsca" ColumnName="id_miejsca" />
+                <ScalarProperty Name="id_rezerwacji" ColumnName="id_rezerwacji" />
+                <ScalarProperty Name="id_seansu" ColumnName="id_seansu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
