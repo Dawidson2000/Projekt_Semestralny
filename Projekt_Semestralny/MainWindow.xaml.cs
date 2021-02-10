@@ -20,8 +20,7 @@ namespace Projekt_Semestralny
     /// </summary>
     public partial class MainWindow : Window
     {
-        Reservation reservation = new Reservation();
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -29,8 +28,9 @@ namespace Projekt_Semestralny
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            reservation.Show();
+            Reservation reservation = new Reservation();
+
+            reservation.ShowDialog();
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)

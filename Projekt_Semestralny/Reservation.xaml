@@ -10,6 +10,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="background1.jpg"/>
         </Grid.Background>
+        <ComboBox Name="FilmsCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,131,0,0" SelectionChanged="FilmsCombo_SelectionChanged"/>
+        <ListBox Name="SeanseList" HorizontalAlignment="Left" Height="279" VerticalAlignment="Top" Width="175" Margin="153,131,0,0"/>
 
     </Grid>
 </Window>
