@@ -21,6 +21,8 @@ namespace Projekt_Semestralny
     /// </summary>
     public partial class Reservation : Window
     {
+        Dictionary<int, string> sits = new Dictionary<int, string>();
+
         public Reservation()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace Projekt_Semestralny
 
                 foreach (var s in seanse)
                 {
-                    SeanseList.Items.Add(s.ToString());     
+                    SeanseList.Items.Add(s.ToString());
                 }
             }
         }
@@ -55,18 +57,24 @@ namespace Projekt_Semestralny
         {
             using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
             {
-
                 if (SeanseList.SelectedItem != null)
                 {
                     MiejscaList.Items.Clear();
+                    sits.Clear();
+
                     string curItem = SeanseList.SelectedItem.ToString();
                     
                     int id = Int32.Parse(curItem[24].ToString());
-                    var miejsca = context.miejsca.Where(m => m.id_sali == id).ToList();
+                    var miejsca = context.miejsca.Where(m => m.id_sali == id).ToList();                    
 
                     foreach (var m in miejsca)
                     {
-                        MiejscaList.Items.Add(m.ToString());
+                        sits.Add(m.id_miejsca, m.ToString());
+                    }
+
+                    foreach (var s in sits)
+                    {
+                        MiejscaList.Items.Add(s.Value);
                     }
                 }
                 else
@@ -102,6 +110,25 @@ namespace Projekt_Semestralny
                 };
                 context.rezerwacje.Add(reservation);
                 context.SaveChanges();
+
+                var id_rezerwacji = context.rezerwacje.Max(r => r.id_rezerwacji);
+
+                int i = 0;
+
+                foreach (var l in list)
+                {
+                    var reservationSeats = new zarezerwowane_miejsca()
+                    {
+                        id_rezerwacji = id_rezerwacji,
+                        id_seansu = Int32.Parse(curItem[11].ToString()),
+                        id_miejsca = sits.FirstOrDefault(s => s.Value.Contains(l.ToString())).Key
+                    };
+                    context.zarezerwowane_miejsca.Add(reservationSeats);
+                    i++;
+                }
+                
+                context.SaveChanges();
+
             }
         }
     }
