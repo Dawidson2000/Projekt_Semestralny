@@ -25,6 +25,8 @@ namespace Projekt_Semestralny
         {
             InitializeComponent();
 
+            MiejscaList.SelectionMode = SelectionMode.Multiple;
+
             using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
             {
                 FilmsCombo.ItemsSource = context.filmy.ToList();
@@ -64,11 +66,42 @@ namespace Projekt_Semestralny
 
                     foreach (var m in miejsca)
                     {
-                        MiejscaList.Items.Add(m.id_miejsca);
+                        MiejscaList.Items.Add(m.ToString());
                     }
                 }
                 else
                     MiejscaList.Items.Clear();
+            }
+           
+        }
+
+        private void MiejscaButton_Click(object sender, RoutedEventArgs e)
+        {
+            var list = MiejscaList.SelectedItems;
+            var p = list[0].ToString().Split(' ').Last();
+            Label1.Content = p;
+        }
+
+        private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
+        {
+            var list = MiejscaList.SelectedItems;
+
+            string curItem = SeanseList.SelectedItem.ToString();
+
+            using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
+            {
+                var reservation = new rezerwacje()
+                {
+                    id_seansu = Int32.Parse(curItem[11].ToString()),
+                    typ_rezerwacji = "internetowa",
+                    imie_klienta = ImieText.Text,
+                    nazwisko_klienta = NazwiskoText.Text,
+                    nr_telefonu = NrTelefonuText.Text,
+                    czy_oplacone = true,
+                    data_dokonania_rezerwacji = DateTime.Now
+                };
+                context.rezerwacje.Add(reservation);
+                context.SaveChanges();
             }
         }
     }
