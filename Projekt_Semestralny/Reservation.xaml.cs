@@ -134,12 +134,18 @@ namespace Projekt_Semestralny
 
             }
         }
+        
         private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
         {
             if (MiejscaList.SelectedItems.Count != 0 && ImieText.Text.Length != 0 && NazwiskoText.Text.Length != 0 && NrTelefonuText.Text.Length == 9)
             {
                 MakeReservation();
                 ErrorLabel.Content = "";
+                using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
+                {
+                    MessageBox.Show($"Numer twojej rezerwacji to: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
+                }                   
+                this.Close();
             }
             else
                 ErrorLabel.Content = "Wypełnij wszystkie pola!";

@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CancelReservation.xaml.cs">
+      <DependentUpon>CancelReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="filmy.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
     <Compile Include="zarezerwowane_miejsca.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="CancelReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

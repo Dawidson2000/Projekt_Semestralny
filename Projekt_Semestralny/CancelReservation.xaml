@@ -1,0 +1,15 @@
+﻿<Window x:Class="Projekt_Semestralny.CancelReservation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_Semestralny"
+        mc:Ignorable="d"
+        Title="CancelReservation" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="background1.jpg"/>
+        </Grid.Background>
+
+    </Grid>
+</Window>

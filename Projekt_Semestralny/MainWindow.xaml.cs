@@ -35,7 +35,9 @@ namespace Projekt_Semestralny
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
+            CancelReservation cancelReservation = new CancelReservation();
 
+            cancelReservation.ShowDialog();
         }
     }
 }

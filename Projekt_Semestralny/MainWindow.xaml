@@ -14,7 +14,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect><Run Foreground="White" FontWeight="Bold" Text="KINO"/><Run Text=" "/><Run Foreground="White" Text="SZTUKA"/></TextBlock>
-        <Button Content="REZERWUJ" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,180,280,169" Click="Button_Click" Height="70" FontSize="30" FontFamily="Global User Interface" Background="Black" Foreground="White" Grid.IsSharedSizeScope="True"/>
-        <Button Content="    ANULUJ &#xA;REZERWACJE" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,272,280,77" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Global User Interface" Background="Black" Foreground="White" HorizontalContentAlignment="Center"/>
+        <Button Name="RezerwujButton" Content="REZERWUJ" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,180,280,169" Click="Button_Click" Height="70" FontSize="30" FontFamily="Global User Interface" Background="Black" Foreground="White" Grid.IsSharedSizeScope="True"/>
+        <Button Name="AnulujRezerwujButton" Content="    ANULUJ &#xA;REZERWACJE" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,272,280,77" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Global User Interface" Background="Black" Foreground="White" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>
