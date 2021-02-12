@@ -13,12 +13,12 @@
         <ComboBox Name="FilmsCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="11,166,0,0" SelectionChanged="FilmsCombo_SelectionChanged"/>
         <ListBox Name="SeanseList" HorizontalAlignment="Left" Height="279" VerticalAlignment="Top" Width="224" Margin="148,166,0,0" SelectionChanged="SeanseList_SelectionChanged"/>
         <ListBox Name="MiejscaList" HorizontalAlignment="Left" Height="280" VerticalAlignment="Top" Width="168" Margin="409,167,0,0"/>
-        <Button Name="MiejscaButton" Content="Wybierz miejsca" HorizontalAlignment="Left" Height="47" Margin="409,460,0,0" VerticalAlignment="Top" Width="166" Click="MiejscaButton_Click"/>
-        <Label Name="Label1" Content="Label" HorizontalAlignment="Left" Height="28" Margin="588,170,0,0" VerticalAlignment="Top" Width="225"/>
+        <Label Name="ErrorLabel" Content="" HorizontalAlignment="Left" Height="26" Margin="412,516,0,0" VerticalAlignment="Top" Width="159"/>
         <TextBox Name="ImieText" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="727,214,0,0"/>
-        <TextBox Name="NazwiskoText" HorizontalAlignment="Left" Height="23" Margin="727,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="NrTelefonuText" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="727,290,0,0"/>
+        <TextBox Name="NazwiskoText" HorizontalAlignment="Left" Height="23" Margin="729,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="NrTelefonuText" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="728,367,0,0"/>
         <Button Name="DokonajRezerwacjiButton" Content="Dokonaj rezerwacji" HorizontalAlignment="Left" Height="45" Margin="723,450,0,0" VerticalAlignment="Top" Width="149" Click="DokonajRezerwacjiButton_Click"/>
+        <Label Name="NoSitsLabel" Content="" HorizontalAlignment="Left" Height="29" Margin="409,459,0,0" VerticalAlignment="Top" Width="165"/>
 
     </Grid>
 </Window>

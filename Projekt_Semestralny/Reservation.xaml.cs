@@ -21,7 +21,7 @@ namespace Projekt_Semestralny
     /// </summary>
     public partial class Reservation : Window
     {
-        Dictionary<int, string> sits = new Dictionary<int, string>();
+        private Dictionary<int, string> sits = new Dictionary<int, string>();
 
         public Reservation()
         {
@@ -61,46 +61,49 @@ namespace Projekt_Semestralny
                 {
                     MiejscaList.Items.Clear();
                     sits.Clear();
+                    NoSitsLabel.Content = "";
 
-                    string curItem = SeanseList.SelectedItem.ToString();
+                    var curItem = SeanseList.SelectedItem.ToString().Split(' ');
                     
-                    int id = Int32.Parse(curItem[24].ToString());
-                    var miejsca = context.miejsca.Where(m => m.id_sali == id).ToList();                    
+                    int id_sali = Int32.Parse(curItem[5].ToString());
+                    int id_seansu = Int32.Parse(curItem[2].ToString());
+                    
+                    var miejsca = context.miejsca.Where(m => m.id_sali == id_sali).ToList();                    
 
                     foreach (var m in miejsca)
                     {
-                        sits.Add(m.id_miejsca, m.ToString());
+                        if(!context.zarezerwowane_miejsca.Where(o => o.id_seansu == id_seansu).Any(z => z.id_miejsca == m.id_miejsca))
+                            sits.Add(m.id_miejsca, m.ToString());
                     }
 
                     foreach (var s in sits)
                     {
                         MiejscaList.Items.Add(s.Value);
                     }
+
+                    if (MiejscaList.Items.Count == 0)
+                    {
+                        NoSitsLabel.Content = "Brak wolnych miejsc";
+                    }
+
                 }
                 else
-                    MiejscaList.Items.Clear();
+                    MiejscaList.Items.Clear();              
             }
            
         }
 
-        private void MiejscaButton_Click(object sender, RoutedEventArgs e)
-        {
-            var list = MiejscaList.SelectedItems;
-            var p = list[0].ToString().Split(' ').Last();
-            Label1.Content = p;
-        }
-
-        private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
+        private void MakeReservation()
         {
             var list = MiejscaList.SelectedItems;
 
-            string curItem = SeanseList.SelectedItem.ToString();
+            var curItem = SeanseList.SelectedItem.ToString().Split(' ');
 
             using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
             {
                 var reservation = new rezerwacje()
                 {
-                    id_seansu = Int32.Parse(curItem[11].ToString()),
+                    id_seansu = Int32.Parse(curItem[2].ToString()),
                     typ_rezerwacji = "internetowa",
                     imie_klienta = ImieText.Text,
                     nazwisko_klienta = NazwiskoText.Text,
@@ -120,7 +123,7 @@ namespace Projekt_Semestralny
                     var reservationSeats = new zarezerwowane_miejsca()
                     {
                         id_rezerwacji = id_rezerwacji,
-                        id_seansu = Int32.Parse(curItem[11].ToString()),
+                        id_seansu = Int32.Parse(curItem[2].ToString()),
                         id_miejsca = sits.FirstOrDefault(s => s.Value.Contains(l.ToString())).Key
                     };
                     context.zarezerwowane_miejsca.Add(reservationSeats);
@@ -130,6 +133,16 @@ namespace Projekt_Semestralny
                 context.SaveChanges();
 
             }
+        }
+        private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MiejscaList.SelectedItems.Count != 0 && ImieText.Text.Length != 0 && NazwiskoText.Text.Length != 0 && NrTelefonuText.Text.Length == 9)
+            {
+                MakeReservation();
+                ErrorLabel.Content = "";
+            }
+            else
+                ErrorLabel.Content = "Wypełnij wszystkie pola!";
         }
     }
 }
