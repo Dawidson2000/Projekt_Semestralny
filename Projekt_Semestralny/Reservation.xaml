@@ -5,20 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_Semestralny"
         mc:Ignorable="d"
-        Title="Reservation" Height="586.275" Width="985.294">
+        Title="Reservation" Height="639.275" Width="976.294">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="background1.jpg"/>
         </Grid.Background>
-        <ComboBox Name="FilmsCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="11,166,0,0" SelectionChanged="FilmsCombo_SelectionChanged"/>
-        <ListBox Name="SeanseList" HorizontalAlignment="Left" Height="279" VerticalAlignment="Top" Width="224" Margin="148,166,0,0" SelectionChanged="SeanseList_SelectionChanged"/>
-        <ListBox Name="MiejscaList" HorizontalAlignment="Left" Height="280" VerticalAlignment="Top" Width="168" Margin="409,167,0,0"/>
-        <Label Name="ErrorLabel" Content="" HorizontalAlignment="Left" Height="26" Margin="412,516,0,0" VerticalAlignment="Top" Width="159"/>
-        <TextBox Name="ImieText" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="727,214,0,0"/>
-        <TextBox Name="NazwiskoText" HorizontalAlignment="Left" Height="23" Margin="729,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="NrTelefonuText" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="728,367,0,0"/>
-        <Button Name="DokonajRezerwacjiButton" Content="Dokonaj rezerwacji" HorizontalAlignment="Left" Height="45" Margin="723,450,0,0" VerticalAlignment="Top" Width="149" Click="DokonajRezerwacjiButton_Click"/>
-        <Label Name="NoSitsLabel" Content="" HorizontalAlignment="Left" Height="29" Margin="409,459,0,0" VerticalAlignment="Top" Width="165"/>
+        <ComboBox Name="FilmsCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="154" Margin="21,281,0,0" SelectionChanged="FilmsCombo_SelectionChanged" BorderBrush="#00959595" Background="Black" FontFamily="Segoe UI Semilight"/>
+        <ListBox Name="SeanseList" HorizontalAlignment="Left" VerticalAlignment="Top" Width="224" Margin="200,271,0,0" SelectionChanged="SeanseList_SelectionChanged" Background="#7F000000" Foreground="White" BorderBrush="#00ABADB3" FontFamily="Segoe UI Semilight" Height="300" FontSize="14"/>
+        <ListBox Name="MiejscaList" HorizontalAlignment="Left" VerticalAlignment="Top" Width="184" Margin="484,271,0,0" Background="#7F000000" BorderBrush="#00ABADB3" FontFamily="Segoe UI Semilight" Foreground="White" Height="300" FontSize="14"/>
+        <Label Name="ErrorLabel" Content="" HorizontalAlignment="Left" Height="26" Margin="4,576,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBox Name="ImieText" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="738,281,0,0" Background="#7F000000" BorderBrush="#00000000" SelectionBrush="#00000000" Foreground="White" Width="180" FontFamily="Segoe UI Semilight" FontSize="18"/>
+        <TextBox Name="NazwiskoText" HorizontalAlignment="Left" Height="35" Margin="738,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="#7F000000" BorderBrush="#00ABADB3" SelectionBrush="#00000000" Width="180" FontFamily="Segoe UI Semilight" FontSize="18" Foreground="White"/>
+        <TextBox Name="NrTelefonuText" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="738,461,0,0" Background="#7F000000" BorderBrush="#00ABADB3" Foreground="White" SelectionBrush="#003399FF" Width="180" FontFamily="Segoe UI Semilight" FontSize="18"/>
+        <Button Name="DokonajRezerwacjiButton" Content="Dokonaj rezerwacji" HorizontalAlignment="Left" Height="44" Margin="738,537,0,0" VerticalAlignment="Top" Width="180" Click="DokonajRezerwacjiButton_Click" FontFamily="Segoe UI Semilight" FontSize="18" Background="White" BorderBrush="#00707070" Foreground="Black" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Label Name="NoSitsLabel" Content="" HorizontalAlignment="Left" Height="29" Margin="493,574,0,0" VerticalAlignment="Top" Width="166"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="43,171,0,0" Height="72" Width="117" Foreground="White" FontFamily="Segoe UI Semilight" TextAlignment="Center"><Run FontSize="36" Text="ETAP 1"/><LineBreak/><Run FontSize="18" Text="Wybierz film"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="237,171,0,0" Height="83" Width="150" Foreground="White" FontFamily="Segoe UI Semilight" TextAlignment="Center" TextDecorations="{x:Null}"><Run FontSize="36" Text="ETAP "/><Run FontSize="36" Text="2"/><LineBreak/><Run FontSize="18" Text="Wybierz "/><Run FontSize="18" Text="seans"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="505,171,0,0" Height="72" Width="142" Foreground="White" FontFamily="Segoe UI Semilight" TextAlignment="Center"><Run FontSize="36" Text="ETAP "/><Run FontSize="36" Text="3"/><LineBreak/><Run FontSize="18" Text="Wybierz "/><Run FontSize="18" Text="miejsca"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="758,171,0,0" Height="72" Width="140" Foreground="White" FontFamily="Segoe UI Semilight" TextAlignment="Center"><Run FontSize="36" Text="ETAP "/><Run FontSize="36" Text="4"/><LineBreak/><Run FontSize="18" Text="W"/><Run FontSize="18" Text="pisz dane"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="17" Margin="738,492,0,0" TextWrapping="Wrap" Text="Nr telefonu" VerticalAlignment="Top" Width="85" Foreground="White" FontFamily="Segoe UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Height="17" Margin="738,404,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Width="85" Foreground="White" FontFamily="Segoe UI Semilight" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Height="17" Margin="738,312,0,0" TextWrapping="Wrap" Text="Imię" VerticalAlignment="Top" Width="85" Foreground="White" FontFamily="Segoe UI Semilight" FontSize="14"/>
 
     </Grid>
 </Window>

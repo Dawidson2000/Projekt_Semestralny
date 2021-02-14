@@ -35,7 +35,7 @@ namespace Projekt_Semestralny
 
         public override string ToString()
         {
-            return $"Nr seansu: {id_seansu} {Environment.NewLine}Nr sali: {id_sali} {Environment.NewLine}Czas rozpoczêcia: {czas_rozpoczecia}";
+            return $"Nr seansu: {id_seansu} {Environment.NewLine}Nr sali: {id_sali} {Environment.NewLine}Data seansu: {czas_rozpoczecia.Date.ToString("MM/dd/yyyy")} {Environment.NewLine}Godzina: {czas_rozpoczecia.ToString("HH:mm")}";
         }
     }
 }

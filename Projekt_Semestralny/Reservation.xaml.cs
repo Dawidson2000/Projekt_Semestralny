@@ -44,7 +44,7 @@ namespace Projekt_Semestralny
             {
                 var item = FilmsCombo.SelectedItem as filmy;
                 
-                var seanse = context.seanse.Where(s => s.id_filmu==item.id_filmu).ToList();
+                var seanse = context.seanse.Where(s => s.id_filmu==item.id_filmu).Where(s => s.czas_rozpoczecia > DateTime.Now).ToList();
 
                 foreach (var s in seanse)
                 {
