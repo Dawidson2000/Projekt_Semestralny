@@ -10,9 +10,17 @@
         <Grid.Background>
             <ImageBrush ImageSource="background1.jpg"/>
         </Grid.Background>
-        <TextBox Name="IdBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="329,166,0,0"/>
-        <TextBox Name="NrBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="328,256,0,0"/>
-        <Button Name ="DeleteButton" Content="ANULUJ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="331,321,0,0" Height="48" Click="DeleteButton_Click"/>
+        <TextBox Name="IdBox" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="180" Margin="306,204,0,0" Background="#7F000000" BorderBrush="#00ABADB3" Foreground="White" SelectionBrush="#00000000" FontFamily="Segoe UI Semilight" FontSize="18"/>
+        <TextBox Name="NrBox" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="180" Margin="306,282,0,0" Background="#7F000000" Foreground="White" SelectionBrush="#003399FF" BorderBrush="#05ABADB3" FontSize="18" FontFamily="Segoe UI Semilight"/>
+        <Button Name ="DeleteButton" Content="Anuluj rezerwację" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="180" Margin="306,360,0,0" Height="42" Click="DeleteButton_Click" Background="White" BorderBrush="#00707070" Foreground="Black" FontFamily="Segoe UI Semilight" FontSize="16">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="77" Margin="211,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="370" FontFamily="Segoe UI Semilight" FontSize="36" TextAlignment="Center" Foreground="White"><Run Text="Anulowanie rezerwa"/><Run Text="cji"/></TextBlock>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="4" Margin="251,173,0,0" Stroke="White" VerticalAlignment="Top" Width="290"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="325,242,0,0" TextWrapping="Wrap" Text="Numer twojej rezerwacji" VerticalAlignment="Top" Width="142" Foreground="White" FontSize="13"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="320,320,0,0" TextWrapping="Wrap" Text="Nr telefonu dla rezerwacji" VerticalAlignment="Top" Width="152" Foreground="White" FontSize="13"/>
 
     </Grid>
 </Window>

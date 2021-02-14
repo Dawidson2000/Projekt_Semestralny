@@ -10,11 +10,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="background1.jpg"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Center" Height="44" Margin="268,111,268,264" TextWrapping="Wrap" VerticalAlignment="Center" Width="256" FontFamily="Global User Interface" FontSize="36" TextAlignment="Center">
+        <TextBlock HorizontalAlignment="Center" Height="72" Margin="214,124,214,223" TextWrapping="Wrap" VerticalAlignment="Center" Width="364" FontFamily="Global User Interface" FontSize="55" TextAlignment="Center">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect><Run Foreground="White" FontWeight="Bold" Text="KINO"/><Run Text=" "/><Run Foreground="White" Text="SZTUKA"/></TextBlock>
-        <Button Name="RezerwujButton" Content="REZERWUJ" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,180,280,169" Click="Button_Click" Height="70" FontSize="30" FontFamily="Global User Interface" Background="Black" Foreground="White" Grid.IsSharedSizeScope="True"/>
-        <Button Name="AnulujRezerwujButton" Content="    ANULUJ &#xA;REZERWACJE" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,272,280,77" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Global User Interface" Background="Black" Foreground="White" HorizontalContentAlignment="Center"/>
+        <Button Name="RezerwujButton" Content="Rezerwuj" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,217,280,132" Click="Button_Click" Height="70" FontSize="30" FontFamily="Segoe UI Semilight" Background="White" Foreground="Black" Grid.IsSharedSizeScope="True">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Name="AnulujRezerwujButton" Content="Anuluj Rezerwacje" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,309,280,40" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Segoe UI Semilight" Background="White" Foreground="Black" HorizontalContentAlignment="Center">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>

@@ -22,6 +22,7 @@ namespace Projekt_Semestralny
         public CancelReservation()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
         }
 
         private void DeleteReservation(int iD, int number)
@@ -58,7 +59,9 @@ namespace Projekt_Semestralny
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Nie udało się!");
+                    Info infoBox = new Info("Błędne dane!");
+                    infoBox.ShowDialog();
+                    //MessageBox.Show("Nie udało się!");
                     this.Close();
                     return;
                 }

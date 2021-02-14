@@ -26,6 +26,7 @@ namespace Projekt_Semestralny
         public Reservation()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.NoResize;
 
             MiejscaList.SelectionMode = SelectionMode.Multiple;
 
@@ -145,7 +146,9 @@ namespace Projekt_Semestralny
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Błąd rezerwacji!");
+                    Info infobox = new Info("Błąd rezerwacji!");
+                    //MessageBox.Show("Błąd rezerwacji!");
+                    infobox.ShowDialog();
                     this.Close();
                     return;
                 }
@@ -153,12 +156,14 @@ namespace Projekt_Semestralny
                 ErrorLabel.Content = "";
                 using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
                 {
-                    MessageBox.Show($"Numer twojej rezerwacji to: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
+                    Info infobox = new Info($"Sukces! Twój numer rezerwacji: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
+                    //MessageBox.Show($"Numer twojej rezerwacji to: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
+                    infobox.ShowDialog();
                 }                   
                 this.Close();
             }
             else
-                ErrorLabel.Content = "Wypełnij wszystkie pola!";
+                ErrorLabel.Content = "Wypełnij poprawnie wszystkie pola!";
         }
     }
 }

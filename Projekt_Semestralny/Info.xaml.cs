@@ -10,35 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekt_Semestralny
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy Info.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Info : Window
     {
-        
-        public MainWindow()
+        public Info(string message)
         {
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
+            InfoLabel.Content = message;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Reservation reservation = new Reservation();
-
-            reservation.ShowDialog();
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-            CancelReservation cancelReservation = new CancelReservation();
-
-            cancelReservation.ShowDialog();
+            this.Close();
         }
     }
 }
