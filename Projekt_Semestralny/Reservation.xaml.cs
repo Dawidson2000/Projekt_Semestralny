@@ -137,9 +137,19 @@ namespace Projekt_Semestralny
         
         private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MiejscaList.SelectedItems.Count != 0 && ImieText.Text.Length != 0 && NazwiskoText.Text.Length != 0 && NrTelefonuText.Text.Length == 9)
+            if (MiejscaList.SelectedItems.Count != 0 && ImieText.Text.Length != 0 && NazwiskoText.Text.Length != 0 && NrTelefonuText.Text.Length == 9 && Int32.TryParse(NrTelefonuText.Text, out int num))
             {
-                MakeReservation();
+                try
+                {
+                    MakeReservation();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Błąd rezerwacji!");
+                    this.Close();
+                    return;
+                }
+                
                 ErrorLabel.Content = "";
                 using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
                 {
