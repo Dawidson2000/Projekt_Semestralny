@@ -34,7 +34,9 @@ namespace Projekt_Semestralny
             {
                 FilmsCombo.ItemsSource = context.filmy.ToList();
                 FilmsCombo.DisplayMemberPath = "tytul";
-            }               
+            }
+
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
         private void FilmsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

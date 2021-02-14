@@ -25,6 +25,7 @@ namespace Projekt_Semestralny
         {
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

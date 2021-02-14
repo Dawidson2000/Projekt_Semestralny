@@ -21,6 +21,7 @@
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="4" Margin="251,173,0,0" Stroke="White" VerticalAlignment="Top" Width="290"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="325,242,0,0" TextWrapping="Wrap" Text="Numer twojej rezerwacji" VerticalAlignment="Top" Width="142" Foreground="White" FontSize="13"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="320,320,0,0" TextWrapping="Wrap" Text="Nr telefonu dla rezerwacji" VerticalAlignment="Top" Width="152" Foreground="White" FontSize="13"/>
+        <Label Name="ErrorLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,376,0,0" Width="243" Foreground="#99FF0000" FontFamily="Segoe UI Semilight" FontSize="14"/>
 
     </Grid>
 </Window>

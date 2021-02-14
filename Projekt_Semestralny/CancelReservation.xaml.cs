@@ -23,6 +23,7 @@ namespace Projekt_Semestralny
         {
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
         private void DeleteReservation(int iD, int number)
@@ -48,6 +49,8 @@ namespace Projekt_Semestralny
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            ErrorLabel.Content = "";
+
             int id;
             int number;
 
@@ -59,16 +62,19 @@ namespace Projekt_Semestralny
                 }
                 catch (Exception)
                 {
-                    Info infoBox = new Info("Błędne dane!");
+                    Info infoBox = new Info("Nie znaleziono rezerwacji!");
                     infoBox.ShowDialog();
                     //MessageBox.Show("Nie udało się!");
                     this.Close();
                     return;
                 }
-
-                MessageBox.Show("Anulowano!");
+                Info infoBox2 = new Info("Anulowano!");
+                infoBox2.ShowDialog();
+                //MessageBox.Show("Anulowano!");
                 this.Close();
             }
+            else
+                ErrorLabel.Content = "Wypełnij poprawnie wszystkie pola!";
         }
     }
 }
