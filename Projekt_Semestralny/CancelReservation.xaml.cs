@@ -22,7 +22,7 @@ namespace Projekt_Semestralny
         public CancelReservation()
         {
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
+            this.ResizeMode = ResizeMode.CanMinimize;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 

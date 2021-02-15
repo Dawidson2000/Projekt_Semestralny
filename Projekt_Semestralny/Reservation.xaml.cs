@@ -26,7 +26,7 @@ namespace Projekt_Semestralny
         public Reservation()
         {
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
+            this.ResizeMode = ResizeMode.CanMinimize;
 
             MiejscaList.SelectionMode = SelectionMode.Multiple;
 
@@ -53,6 +53,13 @@ namespace Projekt_Semestralny
                 {
                     SeanseList.Items.Add(s.ToString());
                 }
+
+                TextDirector.Visibility = Visibility.Visible;
+                TextDuration.Visibility = Visibility.Visible;
+                TextLanguage.Visibility = Visibility.Visible;
+                DirectorLabel.Content = item.nazwisko_rezysera;
+                DurationLabel.Content = item.czas_trwania_minuty + " min";
+                LanguageLabel.Content = item.jezyk;
             }
         }
 

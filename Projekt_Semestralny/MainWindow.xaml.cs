@@ -24,7 +24,7 @@ namespace Projekt_Semestralny
         public MainWindow()
         {
             InitializeComponent();
-            this.ResizeMode = ResizeMode.NoResize;
+            this.ResizeMode = ResizeMode.CanMinimize;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
