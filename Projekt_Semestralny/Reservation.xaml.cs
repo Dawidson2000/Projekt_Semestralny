@@ -23,6 +23,23 @@ namespace Projekt_Semestralny
     {
         private Dictionary<int, string> sits = new Dictionary<int, string>();
 
+        // metoda ładująca filmy do comboboxa
+        private void LoadFilms()
+        {
+            try
+            {
+                using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
+                {
+                    FilmsCombo.ItemsSource = context.filmy.ToList();
+                    FilmsCombo.DisplayMemberPath = "tytul";
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception();              
+            }
+        }
+
         /// <summary>
         /// Konstruktor okna rezerwacji. Ustawia zawartość comboboxa z dostępnymi filmami.
         /// Ustawia okno na środku ekranu oraz blokuje możliwośc zmiany jego wielkości.
@@ -33,12 +50,16 @@ namespace Projekt_Semestralny
             this.ResizeMode = ResizeMode.CanMinimize;
 
             MiejscaList.SelectionMode = SelectionMode.Multiple;
-
-            using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
+            try
             {
-                FilmsCombo.ItemsSource = context.filmy.ToList();
-                FilmsCombo.DisplayMemberPath = "tytul";
+                LoadFilms();
             }
+            catch
+            {
+                Info infobox = new Info("Nie można wczytać danych!");
+                infobox.ShowDialog();
+                return;
+            }  
 
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
