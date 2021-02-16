@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="background1.jpg" />
+    <Resource Include="icon.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

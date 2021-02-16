@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_Semestralny"
         mc:Ignorable="d"
-        Title="Reservation" Height="639.275" Width="976.294">
+        Title="Rezerwacja" Height="639.275" Width="976.294" Icon="icon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="background1.jpg"/>
