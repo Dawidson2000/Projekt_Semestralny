@@ -19,6 +19,11 @@ namespace Projekt_Semestralny
     /// </summary>
     public partial class Info : Window
     {
+        /// <summary>
+        /// Konstruktor inicjalizujący okno.
+        /// Blokuje zmiane wielkości okna, ustawia je na środku ekranu.
+        /// </summary>
+        /// <param name="message"></param>
         public Info(string message)
         {
             InitializeComponent();
@@ -27,6 +32,7 @@ namespace Projekt_Semestralny
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
+        //zamyka okno
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();

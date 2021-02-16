@@ -19,6 +19,9 @@ namespace Projekt_Semestralny
     /// </summary>
     public partial class CancelReservation : Window
     {
+        /// <summary>
+        /// Konstruktor okna anulowania rezerwacji. Ustawia okno na środku ekranu oraz blokuje możliwośc zmiany jego wielkości
+        /// </summary>
         public CancelReservation()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace Projekt_Semestralny
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
+        //metoda usuwająca rekordy z tabel "rezerwacje" i "zarezerwowane miejsca"
         private void DeleteReservation(int iD, int number)
         {
             using (KinoRezerwacjeEntities context = new  KinoRezerwacjeEntities())
@@ -47,6 +51,7 @@ namespace Projekt_Semestralny
             
         }
 
+        //wywołuje metodę usuwającą rezerwację
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             ErrorLabel.Content = "";

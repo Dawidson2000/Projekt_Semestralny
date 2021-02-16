@@ -23,6 +23,10 @@ namespace Projekt_Semestralny
     {
         private Dictionary<int, string> sits = new Dictionary<int, string>();
 
+        /// <summary>
+        /// Konstruktor okna rezerwacji. Ustawia zawartość comboboxa z dostępnymi filmami.
+        /// Ustawia okno na środku ekranu oraz blokuje możliwośc zmiany jego wielkości.
+        /// </summary>
         public Reservation()
         {
             InitializeComponent();
@@ -39,6 +43,7 @@ namespace Projekt_Semestralny
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 
+        //uzupełnia listę dostępnymi seansami po wybraniu danego filmu z listy rozwijanej
         private void FilmsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SeanseList.Items.Clear();
@@ -63,6 +68,7 @@ namespace Projekt_Semestralny
             }
         }
 
+        //Uzupełnia listę dostepnych list po wybraniu danego seansu
         private void SeanseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
@@ -103,6 +109,7 @@ namespace Projekt_Semestralny
            
         }
 
+        //dodaje nowe rekordy do tabel "rezerwacje" i "zarezerwowane miejsca" 
         private void MakeReservation()
         {
             var list = MiejscaList.SelectedItems;
@@ -115,16 +122,16 @@ namespace Projekt_Semestralny
                 {
                     id_seansu = Int32.Parse(curItem[2].ToString()),
                     typ_rezerwacji = "internetowa",
-                    imie_klienta = ImieText.Text,
-                    nazwisko_klienta = NazwiskoText.Text,
-                    nr_telefonu = NrTelefonuText.Text,
-                    czy_oplacone = true,
+                    imie_klienta = NameText.Text,
+                    nazwisko_klienta = SurnameText.Text,
+                    nr_telefonu = NumberText.Text,
+                    czy_oplacone = false,
                     data_dokonania_rezerwacji = DateTime.Now
                 };
                 context.rezerwacje.Add(reservation);
                 context.SaveChanges();
 
-                var id_rezerwacji = context.rezerwacje.Max(r => r.id_rezerwacji);
+                var id_reservation = context.rezerwacje.Max(r => r.id_rezerwacji);
 
                 int i = 0;
 
@@ -132,7 +139,7 @@ namespace Projekt_Semestralny
                 {
                     var reservationSeats = new zarezerwowane_miejsca()
                     {
-                        id_rezerwacji = id_rezerwacji,
+                        id_rezerwacji = id_reservation,
                         id_seansu = Int32.Parse(curItem[2].ToString()),
                         id_miejsca = sits.FirstOrDefault(s => s.Value.Contains(l.ToString())).Key
                     };
@@ -145,9 +152,10 @@ namespace Projekt_Semestralny
             }
         }
         
-        private void DokonajRezerwacjiButton_Click(object sender, RoutedEventArgs e)
+        //Wywołuje metodę anulowania rezerwacji
+        private void MakeReservationButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MiejscaList.SelectedItems.Count != 0 && ImieText.Text.Length != 0 && NazwiskoText.Text.Length != 0 && NrTelefonuText.Text.Length == 9 && Int32.TryParse(NrTelefonuText.Text, out int num))
+            if (MiejscaList.SelectedItems.Count != 0 && NameText.Text.Length != 0 && SurnameText.Text.Length != 0 && NumberText.Text.Length == 9 && Int32.TryParse(NumberText.Text, out int num))
             {
                 try
                 {
@@ -156,7 +164,6 @@ namespace Projekt_Semestralny
                 catch (Exception)
                 {
                     Info infobox = new Info("Błąd rezerwacji!");
-                    //MessageBox.Show("Błąd rezerwacji!");
                     infobox.ShowDialog();
                     this.Close();
                     return;
@@ -166,7 +173,6 @@ namespace Projekt_Semestralny
                 using (KinoRezerwacjeEntities context = new KinoRezerwacjeEntities())
                 {
                     Info infobox = new Info($"Sukces! Twój numer rezerwacji: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
-                    //MessageBox.Show($"Numer twojej rezerwacji to: {context.rezerwacje.Max(r => r.id_rezerwacji)}");
                     infobox.ShowDialog();
                 }                   
                 this.Close();

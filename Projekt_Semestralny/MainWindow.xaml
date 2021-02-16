@@ -19,7 +19,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Name="AnulujRezerwujButton" Content="Anuluj Rezerwacje" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,309,280,40" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Segoe UI Semilight" Background="White" Foreground="Black" HorizontalContentAlignment="Center">
+        <Button Name="AnulujRezerwujButton" Content="Anuluj Rezerwację" HorizontalAlignment="Center" VerticalAlignment="Center" Width="232" Margin="280,309,280,40" Click="Button_Click2" Height="70" FontSize="27" FontFamily="Segoe UI Semilight" Background="White" Foreground="Black" HorizontalContentAlignment="Center">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
