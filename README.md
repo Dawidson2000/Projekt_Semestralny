@@ -18,7 +18,7 @@
 * Najpierw z rozwijanego comboboxa wybieramy interesujący nas film
 * Następnie wyświetla się lista dostepnych seansów i dokonujemy wyboru
 * Kolejnym krokiem jest wybranie miejsc w sali
-* Z lewej strony znajduja się pola tekstowe: **Imie**, **Nawisko** oraz **Nr telefonu**
+* Z prawej strony znajduja się pola tekstowe: **Imie**, **Nawisko** oraz **Nr telefonu**, które trzeba uzupełnić
 * Ostatnim etapem jest wciśnięcie przycisku: **Rezerwuj**
 * Jeżeli wszystkie dane sa poprawne rezerwacja zostanie dokonana, użytkownik dostanie informację zwrotną z numerem dokonanej rezerwacji
 
