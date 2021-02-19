@@ -6,6 +6,9 @@
 * Zawiera kompletną baze danych wraz z danymi
 * Ten plik nalezy uruchomić w Visual Studio w SQL Server Object Explorer, a dokładniej w localDB
 
+## INSTALATOR
+* Instalator znajduje się w folderze z projektem, dokładniej w Setup>Install
+
 ## OPIS PROGRAMU
 * Program składa sie z 3 głownych okien i jednego informacyjnego
 
@@ -25,3 +28,5 @@
 ### Okno anulowania rezerwacji
 * Aby anulować rezerwację należy podac wcześniej pokazany nr rezerwacji oraz skojarzony z nią numer telefonu
 * Jeżeli dane są poprawne użytkownik dostanie informację zwrotną, że wszystko sie powiodło, w innym przypadku informację co jest nie tak
+
+
