@@ -8,7 +8,7 @@
 
 ## INSTALATOR
 * Instalator znajduje się w folderze z projektem, dokładniej w Setup>Install
-* Po uruchomieniu **setup.ex**e włączy się instalacja
+* Po uruchomieniu **setup.exe** włączy się instalacja
 
 ## OPIS PROGRAMU
 * Program składa sie z 3 głownych okien i jednego informacyjnego
