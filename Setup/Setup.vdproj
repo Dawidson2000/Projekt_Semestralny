@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_08111BB96B7A83F38488987AF4EA8EC3"
+        "MsmKey" = "8:_53F7715435804DB8B399F91C68A16B65"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_55D22BE7FCDBA09565A8983179CDABF1"
         "OwnerKey" = "8:_53F7715435804DB8B399F91C68A16B65"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_08111BB96B7A83F38488987AF4EA8EC3"
-        "OwnerKey" = "8:_EC0B1570FF58091BB8D6D25DD7E5F7CD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_53F7715435804DB8B399F91C68A16B65"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_55D22BE7FCDBA09565A8983179CDABF1"
+        "OwnerKey" = "8:_9305C06E5F870910EDC9433AC042F81A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -39,32 +39,32 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC0B1570FF58091BB8D6D25DD7E5F7CD"
+        "MsmKey" = "8:_9305C06E5F870910EDC9433AC042F81A"
         "OwnerKey" = "8:_53F7715435804DB8B399F91C68A16B65"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_53F7715435804DB8B399F91C68A16B65"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9305C06E5F870910EDC9433AC042F81A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_55D22BE7FCDBA09565A8983179CDABF1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_64868963FF84E0479D9544EFEB3E080E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_53F7715435804DB8B399F91C68A16B65"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC0B1570FF58091BB8D6D25DD7E5F7CD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_08111BB96B7A83F38488987AF4EA8EC3"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -85,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Install"
         {
@@ -101,6 +109,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -117,6 +133,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -146,14 +170,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_08111BB96B7A83F38488987AF4EA8EC3"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55D22BE7FCDBA09565A8983179CDABF1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_08111BB96B7A83F38488987AF4EA8EC3"
+                    "_55D22BE7FCDBA09565A8983179CDABF1"
                     {
                     "Name" = "8:EntityFramework.dll"
                     "Attributes" = "3:512"
@@ -208,14 +232,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC0B1570FF58091BB8D6D25DD7E5F7CD"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9305C06E5F870910EDC9433AC042F81A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_EC0B1570FF58091BB8D6D25DD7E5F7CD"
+                    "_9305C06E5F870910EDC9433AC042F81A"
                     {
                     "Name" = "8:EntityFramework.SqlServer.dll"
                     "Attributes" = "3:512"
@@ -294,7 +318,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Dawid Kułaga"
+        "ProductName" = "8:Kino Sztuka"
         "ProductCode" = "8:{B64DAA3D-4470-43FA-B2B6-75354F6ECB36}"
         "PackageCode" = "8:{58BEF52D-B8F5-4E74-9E73-0BC32BA2570F}"
         "UpgradeCode" = "8:{73F68B29-088B-4D25-9E4F-B0BC8CFC0CC3}"
@@ -304,10 +328,10 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Dawid Kułaga"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Dawid Kułaga"
+        "Title" = "8:Kino Sztuka"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Dawid Kułaga"
         "Keywords" = "8:"
@@ -845,7 +869,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_53F7715435804DB8B399F91C68A16B65"
             {
-            "SourcePath" = "8:..\\Projekt_Semestralny\\obj\\Release\\Projekt_Semestralny.exe"
+            "SourcePath" = "8:..\\Projekt_Semestralny\\obj\\Debug\\Projekt_Semestralny.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2B8963B490DB4019B2B6019344C3D351"
