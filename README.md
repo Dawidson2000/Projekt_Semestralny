@@ -2,9 +2,9 @@
 
 ## INICJALIZACJA BAZY DANYCH:
 
-* W folderze z projektem znajduje sie plik o nazwie **KinoRezerwacjeQuery.sql**
+* W folderze z projektem znajduje sie plik o nazwie **KinoRezerwacjeQuery1.sql**
 * Zawiera kompletną baze danych wraz z danymi
-* Ten plik nalezy uruchomić w Visual Studio w SQL Server Object Explorer, a dokładniej w localDB
+* Ten plik nalezy uruchomić w Visual Studio w SQL Server Object Explorer, w zakładce SQL Server a dokładniej w localDB
 
 ## INSTALATOR
 * Instalator znajduje się w folderze z projektem, dokładniej w Setup>Install
