@@ -4,6 +4,7 @@
 
 * W folderze z projektem znajduje sie plik o nazwie **KinoRezerwacjeQuery1.sql**
 * Zawiera kompletną baze danych wraz z danymi
+* Wykorzystuje MS SQL Server jako LocalDB w VisualStudio (SQL Server Express)
 * Ten plik nalezy uruchomić w Visual Studio w SQL Server Object Explorer, w zakładce SQL Server a dokładniej w localDB
 
 ## INSTALATOR
